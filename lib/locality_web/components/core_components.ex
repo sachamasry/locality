@@ -673,4 +673,36 @@ defmodule LocalityWeb.CoreComponents do
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
   end
+
+  def live_select(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    assigns =
+      assigns
+      |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))
+      |> assign(:live_select_opts, assigns_to_attributes(assigns, [:errors, :label]))
+
+    ~H"""
+    <div phx-feedback-for={@field.name}>
+      <.label for={@field.id}><%= @label %></.label>
+      <LiveSelect.live_select
+        field={@field}
+        active_option_class={["bg-violet-700 text-white"]}
+        available_option_class={["cursor-pointer hover:bg-violet-500 hover:text-white rounded"]}
+        clear_button_class={["cursor-pointer hidden"]}
+        container_class={["h-full relative text-black"]}
+        option_class={["px-4 py-1 rounded"]}
+        selected_option_class={["bg-violet-400"]}
+        text_input_class={[
+          "mt-2 block w-full rounded-lg border-zinc-300 py-[7px] px-[11px]",
+          "text-zinc-900 focus:outline-none focus:ring-4 sm:text-sm sm:leading-6",
+          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400 phx-no-feedback:focus:ring-zinc-800/5",
+          "border-zinc-300 focus:border-zinc-400 focus:ring-zinc-800/5",
+          @errors != [] && "border-rose-400 focus:border-rose-400 focus:ring-rose-400/10"
+        ]}
+        {@live_select_opts}
+      />
+
+      <.error :for={msg <- @errors}><%= msg %></.error>
+    </div>
+    """
+  end
 end

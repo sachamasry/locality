@@ -1,0 +1,42 @@
+<.header>
+  Listing Mock locations
+  <:actions>
+    <.link patch={~p"/mock_locations/new"}>
+      <.button>New Mock location</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mock_locations"
+  rows={@streams.mock_locations}
+  row_click={fn {_id, mock_location} -> JS.navigate(~p"/mock_locations/#{mock_location.id}") end}
+>
+  <:col :let={{_id, mock_location}} label="City"><%= mock_location.city_name %></:col>
+  <:col :let={{_id, mock_location}} label="Note"><%= mock_location.note %></:col>
+  <:action :let={{_id, mock_location}}>
+    <div class="sr-only">
+      <.link navigate={~p"/mock_locations/#{mock_location.id}"}>Show</.link>
+    </div>
+    <.link patch={~p"/mock_locations/#{mock_location.id}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, mock_location}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: mock_location.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal :if={@live_action in [:new, :edit]} id="mock_location-modal" show on_cancel={JS.patch(~p"/mock_locations")}>
+  <.live_component
+    module={LocalityWeb.MockLocationLive.FormComponent}
+    id={@mock_location.id || :new}
+    title={@page_title}
+    action={@live_action}
+    mock_location={@mock_location}
+    patch={~p"/mock_locations"}
+  />
+</.modal>

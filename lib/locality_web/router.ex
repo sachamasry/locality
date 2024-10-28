@@ -18,6 +18,13 @@ defmodule LocalityWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/mock_locations", MockLocationLive.Index, :index
+    live "/mock_locations/new", MockLocationLive.Index, :new
+    live "/mock_locations/:id/edit", MockLocationLive.Index, :edit
+
+    live "/mock_locations/:id", MockLocationLive.Show, :show
+    live "/mock_locations/:id/show/edit", MockLocationLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,27 @@
+<.header>
+  Mock location <%= @mock_location.id %>
+  <:subtitle>This is a mock_location record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/mock_locations/#{@mock_location}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit mock_location</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="City"><%= @city_label %></:item>
+  <:item title="Note"><%= @mock_location.note %></:item>
+</.list>
+
+<.back navigate={~p"/mock_locations"}>Back to mock_locations</.back>
+
+<.modal :if={@live_action == :edit} id="mock_location-modal" show on_cancel={JS.patch(~p"/mock_locations/#{@mock_location}")}>
+  <.live_component
+    module={LocalityWeb.MockLocationLive.FormComponent}
+    id={@mock_location.id}
+    title={@page_title}
+    action={@live_action}
+    mock_location={@mock_location}
+    patch={~p"/mock_locations/#{@mock_location}"}
+  />
+</.modal>
