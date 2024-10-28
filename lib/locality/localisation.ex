@@ -1,12 +1,12 @@
-defmodule Klepsidra.Localisation do
+defmodule Locality.Localisation do
   @moduledoc """
   The Localisation context.
   """
 
   import Ecto.Query, warn: false
-  alias Klepsidra.Repo
+  alias Locality.Repo
 
-  alias Klepsidra.Localisation.Language
+  alias Locality.Localisation.Language
 
   @doc """
   Returns the list of localisation_languages.

@@ -1,4 +1,4 @@
-defmodule Klepsidra.Localisation.Language do
+defmodule Locality.Localisation.Language do
   @moduledoc """
   Defines a schema for the `Languages` entity, listing the languages of the world.
 

@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations do
+defmodule Locality.Locations do
   @moduledoc """
   Location utilities for countries, subdivisions and cities.
 
@@ -7,15 +7,15 @@ defmodule Klepsidra.Locations do
   """
 
   import Ecto.Query, warn: false
-  alias Klepsidra.Repo
+  alias Locality.Repo
 
-  alias Klepsidra.Locations.FeatureClass
-  alias Klepsidra.Locations.FeatureCode
-  alias Klepsidra.Locations.Continent
-  alias Klepsidra.Locations.Country
-  alias Klepsidra.Locations.AdministrativeDivisions1
-  alias Klepsidra.Locations.AdministrativeDivisions2
-  alias Klepsidra.Locations.City
+  alias Locality.Locations.FeatureClass
+  alias Locality.Locations.FeatureCode
+  alias Locality.Locations.Continent
+  alias Locality.Locations.Country
+  alias Locality.Locations.AdministrativeDivisions1
+  alias Locality.Locations.AdministrativeDivisions2
+  alias Locality.Locations.City
 
   @doc """
   Returns the list of locations_feature_classes.

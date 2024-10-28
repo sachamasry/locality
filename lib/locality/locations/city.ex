@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations.City do
+defmodule Locality.Locations.City do
   @moduledoc """
   Defines a schema for the `City` entity, used to select cities of the world.
 
@@ -9,7 +9,7 @@ defmodule Klepsidra.Locations.City do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Klepsidra.Locations
+  alias Locality.Locations
 
   @primary_key {:id, Ecto.UUID, autogenerate: true}
   @foreign_key_type Ecto.UUID

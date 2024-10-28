@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations.FeatureClass do
+defmodule Locality.Locations.FeatureClass do
   @moduledoc """
   Defines a schema for the `FeatureClass` entity, listing GeoNames'
   feature classes, used for categorising locations around the world.

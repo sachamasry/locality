@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations.Continent do
+defmodule Locality.Locations.Continent do
   @moduledoc """
   Defines a schema for the `Continents` entity, listing continents of the world.
 

@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations.Country do
+defmodule Locality.Locations.Country do
   @moduledoc """
   Defines a schema for the `Country` entity, listing the countries of the world.
 

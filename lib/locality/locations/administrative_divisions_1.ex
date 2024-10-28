@@ -1,4 +1,4 @@
-defmodule Klepsidra.Locations.AdministrativeDivisions1 do
+defmodule Locality.Locations.AdministrativeDivisions1 do
   @moduledoc """
   Defines a schema for the `AdministrativeDivision1` entity, listing GeoNames'
   country code and administrative division 1 codes, data that is used in
